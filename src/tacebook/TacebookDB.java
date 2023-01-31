@@ -11,11 +11,21 @@ import java.util.ArrayList;
  * @author haleacu
  */
 public class TacebookDB {
-    private ArrayList <Profile> profiles;
+    private static ArrayList <Profile> profiles;
 
-    public ArrayList<Profile> getProfiles() {
+    public static ArrayList<Profile> getProfiles() {
         return profiles;
-    } 
+    }    
+
+    public void setProfiles(ArrayList<Profile> profiles) {
+        TacebookDB.profiles = profiles;
+    }
+
+    public TacebookDB(ArrayList<Profile> profiles) {
+        TacebookDB.profiles = profiles;
+    }
+    
+    
     
     
     

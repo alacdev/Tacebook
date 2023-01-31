@@ -17,8 +17,11 @@ public class ProfileDB {
      * @return devuelve el objeto 'Profile' asociado a ese usuario o 'null' en caso de que no exista
      */
     public static Profile findByName (String name, int NumberOfPosts) {
-     
-        
+        for (Profile p: TacebookDB.getProfiles()) {
+            if(p.getName().equals(name)) {
+                return p;
+            }
+        }        
         return null;        
     }
     
@@ -30,8 +33,11 @@ public class ProfileDB {
      * @return devuelve el objeto 'Profile' asociado a ese usuario o 'null' en caso de que no exista
      */
     public static Profile findByNameAndPassword (String name, String password, int NumberOfPosts) {
-       
-        
+        for (Profile p: TacebookDB.getProfiles()) {
+            if(p.getName().equals(name) & p.getPassword().equals(password)) {
+                return p;
+            }
+        }        
         return null;
     }
     
@@ -40,7 +46,7 @@ public class ProfileDB {
      * @param profile
      */
     public static void save(Profile profile) {
-        
+        TacebookDB.getProfiles().add(profile);        
     }
     
     /**
