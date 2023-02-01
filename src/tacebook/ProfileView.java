@@ -12,14 +12,22 @@ import java.util.Scanner;
  */
 public class ProfileView {
     
-    private int postsShowed = 10;
-    private Profile profileController;
-    private ProfileController profileController1;
+    private int postsShowed = 10;    
+    private ProfileController profileController;
 
-    public ProfileView(Profile profileController) {
+    /**
+     * Constructor de la clase ProfileView pasando un objeto ProfileController
+     * como parámetro
+     * @param profileController
+     */
+    public ProfileView(ProfileController profileController) {
         this.profileController = profileController;
     }    
 
+    /**
+     * Método get de postsShowed
+     * @return
+     */
     public int getPostsShowed() {
         return postsShowed;
     }
