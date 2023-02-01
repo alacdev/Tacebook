@@ -19,7 +19,7 @@ public class InitMenuView {
      *
      * @return
      */
-    private String password, name, nameOfProfile, status;
+    private String password, password2, name, nameOfProfile, status;
 
     /**
      * Get para obtener el valor de la contraseña.
@@ -65,8 +65,10 @@ public class InitMenuView {
                 System.out.println("Introduce o contrasinal:");
                 password = scan.nextLine();
                 p.login(name, password);
+                break;
             case 2:
                 p.register();
+                break;
             case 3:
                 return true;
         }
@@ -87,20 +89,18 @@ public class InitMenuView {
      * invocará al método "createProfile()" del controlador.
      */
     public void showRegisterMenu() {
-        boolean equalPassword = true;
-        InitMenuView s = new InitMenuView();
+        boolean equalPassword = false;
 
         System.out.println("Inserta un nombre de perfil: ");
         nameOfProfile = scan.nextLine();
 
-        for (int i = 0; i < 2; i++) {
-            System.out.println("Inserta una contraseña: ");
-            password = scan.nextLine();
-        }
-        if (s.getPassword().equals(password)) {
+        System.out.println("Inserta una contraseña:");
+        password = scan.nextLine();
+        System.out.println("Inserta una contraseña:");
+        password2 = scan.nextLine();
+        if (password.equals(password2)) {
             equalPassword = true;
         }
-
         System.out.println("Inserta un estado: ");
         status = scan.nextLine();
     }
