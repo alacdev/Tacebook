@@ -12,6 +12,18 @@ import java.util.Scanner;
  */
 public class ProfileView {
     
+    private int postsShowed = 10;
+    private Profile profileController;
+
+    public ProfileView(Profile profileController) {
+        this.profileController = profileController;
+    }    
+
+    public int getPostsShowed() {
+        return postsShowed;
+    }
+    
+    
     private void showProfileInfo(boolean ownProfile, Profile profile) {
         
     }

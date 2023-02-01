@@ -10,12 +10,35 @@ package tacebook;
  */
 public class ProfileController {
     
+    private Profile profileView;
+    private Profile sessionProfile;   
+    
+
+    public Profile getProfileView() {
+        return profileView;
+    }
+
+    public void setProfileView(Profile profileView) {
+        this.profileView = profileView;
+    }
+
+    public Profile getSessionProfile() {
+        return sessionProfile;
+    }
+
+    public void setSessionProfile(Profile sessionProfile) {
+        this.sessionProfile = sessionProfile;
+    }
+    
+    
+    
     /**
      * Obtiene el número de publicaciones a mostrar, para lo que llamará al
      * método con el mismo nombre de la clase ProfileView.
      * @return devuelve el nº de publicaciones a mostrar
      */
     public int getPostsShowed() {
+        //no lo puedo hacer hasta que brais haga el profileview
         
         
         return 0;    
@@ -26,6 +49,7 @@ public class ProfileController {
      * muestra el menú de perfil para el.
      */
     public void reloadProfile() {
+        
         
     }
     

@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package tacebook;
-
 import java.util.Scanner;
 
 /**
@@ -19,12 +18,21 @@ public class InitMenuView {
      *
      * @return
      */
-    private String password, name;
+    private String password, name, nameOfProfile, status;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    Scanner scan = new Scanner(System.in);
 
     public boolean showLoginMenu() {
 
         InitMenuController p = new InitMenuController();
-        Scanner scan = new Scanner(System.in);
 
         System.out.println("Escolle unha opción");
         System.out.println("1. Iniciar sesión");
@@ -56,7 +64,7 @@ public class InitMenuView {
      * Muestra al usuario un mensaje de usuario y/o contraseña erróneos.
      */
     public void showLoginErrorMessage() {
-
+        System.out.println("Usuario o/y contraseña incorrectos");
     }
 
     /**
@@ -65,7 +73,22 @@ public class InitMenuView {
      * invocará al método "createProfile()" del controlador.
      */
     public void showRegisterMenu() {
+        boolean equalPassword = true;
+        InitMenuView s = new InitMenuView();
 
+        System.out.println("Inserta un nombre de perfil: ");
+        nameOfProfile = scan.nextLine();
+
+        for (int i = 0; i < 2; i++) {
+            System.out.println("Inserta una contraseña: ");
+            password = scan.nextLine();
+        }
+        if (s.getPassword().equals(password)) {
+            equalPassword = true;
+        }
+
+        System.out.println("Inserta un estado: ");
+        status = scan.nextLine();
     }
 
     /**
@@ -76,6 +99,8 @@ public class InitMenuView {
      */
     public String showNewNameMenu() {
 
-        return null;
+        System.out.println("El nombre introducido ya está en uso, intruduzca uno diferente, por favor: ");
+        nameOfProfile = scan.nextLine();
+        return nameOfProfile;
     }
 }
