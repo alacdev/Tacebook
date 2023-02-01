@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package tacebook;
+
 import java.util.Scanner;
 
 /**
@@ -20,21 +21,36 @@ public class InitMenuView {
      */
     private String password, name, nameOfProfile, status;
 
+    /**
+     * Get para obtener el valor de la contraseña.
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Set para modificar el valor de la contraseña.
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
     Scanner scan = new Scanner(System.in);
 
+    /**
+     * Método que muestra el menú de inicio de sesión y proporciona opciones de
+     * inicio de sesión.
+     *
+     * @return
+     */
     public boolean showLoginMenu() {
 
         InitMenuController p = new InitMenuController();
 
-        System.out.println("Escolle unha opción");
         System.out.println("1. Iniciar sesión");
         System.out.println("2. Crear un novo perfil");
         System.out.println("3. Saír da aplicación");
@@ -49,10 +65,8 @@ public class InitMenuView {
                 System.out.println("Introduce o contrasinal:");
                 password = scan.nextLine();
                 p.login(name, password);
-                return true;
             case 2:
                 p.register();
-                return true;
             case 3:
                 return true;
         }

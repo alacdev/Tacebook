@@ -14,6 +14,7 @@ public class ProfileView {
     
     private int postsShowed = 10;
     private Profile profileController;
+    private ProfileController profileController1;
 
     public ProfileView(Profile profileController) {
         this.profileController = profileController;
