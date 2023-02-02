@@ -21,23 +21,29 @@ public class InitMenuView {
      */
     private String password, password2, name, nameOfProfile, status;
 
+    public String getName() {
+        return name;
+    }
+
     /**
      * Get para obtener el valor de la contraseña.
      *
      * @return
      */
-    public String getPassword() {
-        return password;
+    public String getStatus() {    
+        return status;
     }
 
-    /**
-     * Set para modificar el valor de la contraseña.
-     *
-     * @param password
-     */
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String name) {
+        this.name = name;
     }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    
+
 
     Scanner scan = new Scanner(System.in);
 
