@@ -10,19 +10,19 @@ package tacebook;
  */
 public class InitMenuController {
 
-    InitMenuView imv = new InitMenuView();
-    ProfileController proCon = new ProfileController();
+    InitMenuView menuView = new InitMenuView(this);
+    ProfileController controller = new ProfileController();
 
     /**
      * Método que inicia la aplicación llamando repetidamente al showLoginMenu()
      * hasta que devuelve true
      */
     private void init() {
+        boolean exit;
         do {
-            imv.showLoginMenu();
-        } while (false);
-
-    }
+            exit = menuView.showLoginMenu();
+        } while (!exit);
+    }   
 
     /**
      * Método para iniciar sesión que abre una sesión si existe el usuario con
@@ -31,12 +31,13 @@ public class InitMenuController {
      * @param name
      * @param password
      */
-    public void login(String name, String password) {
+    public void login(String name, String password) {        
         for (Profile p : TacebookDB.getProfiles()) {
             if (p.getName().equals(name) & p.getPassword().equals(password)) {
-                proCon.openSession(p);
+                controller.openSession(p);
             } else {
-                imv.showLoginErrorMessage();
+                System.out.println("");
+                menuView.showLoginErrorMessage();
             }
         }
 
@@ -46,7 +47,7 @@ public class InitMenuController {
      * Método que registra un nuevo usuario
      */
     public void register() {
-        imv.showRegisterMenu();
+        menuView.showRegisterMenu();
     }
 
     /**
@@ -70,11 +71,11 @@ public class InitMenuController {
         }
 
         if (nameIsUsed) {
-            imv.showNewNameMenu();
+            menuView.showNewNameMenu();
         } else {
             Profile profile = new Profile(name, password, status);
             ProfileDB.save(profile);
-            proCon.openSession(profile);
+            controller.openSession(profile);
         }
     }
 

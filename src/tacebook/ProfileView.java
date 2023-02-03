@@ -13,19 +13,11 @@ import java.util.Scanner;
 public class ProfileView {
 
     private int postsShowed = 10;
-    private ProfileController profileController;
-    Scanner scan = new Scanner(System.in);
-    InitMenuView s = new InitMenuView();
-    ProfileController p = new ProfileController();
+    private ProfileController controller;
+    InitMenuView initMenuView;
 
-    /**
-     * Constructor de la clase ProfileView pasando un objeto ProfileController
-     * como parámetro
-     *
-     * @param profileController
-     */
-    public ProfileView(ProfileController profileController) {
-        this.profileController = profileController;
+    public ProfileView(ProfileController controller) {
+        this.controller = controller;
     }
 
     /**
@@ -34,32 +26,50 @@ public class ProfileView {
      * @return
      */
     public int getPostsShowed() {
+
         return postsShowed;
     }
 
     private void showProfileInfo(boolean ownProfile, Profile profile) {
-
-        System.out.println("El nombre es el siguiente: " + s.getName());
-        System.out.println("El estado actual es: " + s.getStatus());
+        ownProfile = true;
+        System.out.println("El nombre es el siguiente: " + profile.getName());
+        System.out.println("El estado actual es: " + profile.getStatus());
         ownProfile = true;
     }
 
-    private void changeStatus(boolean ownProfile, Scanner scanner, Profile profile) {
+    private void changeStatus(boolean ownProfile, Scanner scan, Profile profile) {
 
         if (ownProfile = true) {
             System.out.println("Inserta un nuevo estado: ");
             String status = scan.nextLine();
-            s.setStatus(status);
-            p.updateProfileStatus(status);
-        } else if (ownProfile = false) {
+            profile.setStatus(status);
+            controller.updateProfileStatus(status);
+        } else {
             System.out.println("Esta opción sólo es valida en la propia biografía");
             this.showProfileMenu(profile);
         }
     }
 
     public void showProfileMenu(Profile profile) {
+        Scanner scan = new Scanner(System.in);
         this.showProfileInfo(true, profile);
-        this.changeStatus(true, scan, profile);
-        
+
+        System.out.println("1. Cambiar el estado");
+        System.out.println("2. Cerrar sesión");
+
+        int option = scan.nextInt();
+        scan.nextLine();
+        switch (option) {
+            case 1:
+                this.changeStatus(true, scan, profile);
+                this.showProfileMenu(profile);
+                break;
+            case 2:
+                break;
+
+            default:
+                System.out.println("Opción incorrecta");
+                this.showProfileMenu(profile);
+        }
     }
 }

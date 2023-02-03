@@ -19,33 +19,11 @@ public class InitMenuView {
      *
      * @return
      */
-    private String password, password2, name, nameOfProfile, status;
+    private InitMenuController controller;
 
-    public String getName() {
-        return name;
+    public InitMenuView(InitMenuController controller) {
+        this.controller = controller;
     }
-
-    /**
-     * Get para obtener el valor de la contraseña.
-     *
-     * @return
-     */
-    public String getStatus() {    
-        return status;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    
-    
-
-
-    Scanner scan = new Scanner(System.in);
 
     /**
      * Método que muestra el menú de inicio de sesión y proporciona opciones de
@@ -54,9 +32,10 @@ public class InitMenuView {
      * @return
      */
     public boolean showLoginMenu() {
+        String password, name;
 
-        InitMenuController p = new InitMenuController();
-
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Bienvenid@ a Taceboook - La red social más bakana del globo");
         System.out.println("1. Iniciar sesión");
         System.out.println("2. Crear un novo perfil");
         System.out.println("3. Saír da aplicación");
@@ -69,16 +48,22 @@ public class InitMenuView {
                 System.out.println("Introduce o nome de usuario:");
                 name = scan.nextLine();
                 System.out.println("Introduce o contrasinal:");
-                password = scan.nextLine();
-                p.login(name, password);
+                if (System.console() != null) {
+                    password = new String(System.console().readPassword());
+                } else {
+                    password = scan.nextLine();
+                }
+                controller.login(name, password);
                 break;
             case 2:
-                p.register();
+                controller.register();
+                //showLoginMenu();
                 break;
             case 3:
                 return true;
+            default:
+                System.out.println(" Debes elegir una opción del 1 al 3");
         }
-        System.out.println(" Debes elegir una opción del 1 al 3");
         return false;
     }
 
@@ -86,7 +71,7 @@ public class InitMenuView {
      * Muestra al usuario un mensaje de usuario y/o contraseña erróneos.
      */
     public void showLoginErrorMessage() {
-        System.out.println("Usuario o/y contraseña incorrectos");
+        System.out.println("Usuario y/o contraseña incorrectos");
     }
 
     /**
@@ -95,20 +80,36 @@ public class InitMenuView {
      * invocará al método "createProfile()" del controlador.
      */
     public void showRegisterMenu() {
+        String password, password2, name, nameOfProfile, status;
+        Scanner scan = new Scanner(System.in);
+
         boolean equalPassword = false;
 
         System.out.println("Inserta un nombre de perfil: ");
         nameOfProfile = scan.nextLine();
-
-        System.out.println("Inserta una contraseña:");
-        password = scan.nextLine();
-        System.out.println("Inserta una contraseña:");
-        password2 = scan.nextLine();
-        if (password.equals(password2)) {
-            equalPassword = true;
-        }
+        do {
+            System.out.println("Inserta una contraseña:");
+            if (System.console() != null) {
+                password = new String(System.console().readPassword());
+            } else {
+                password = scan.nextLine();
+            }
+            System.out.println("Inserta una contraseña:");
+            if (System.console() != null) {
+                password2 = new String(System.console().readPassword());
+            } else {
+                password2 = scan.nextLine();
+            }
+            if (!password.equals(password2)) {
+                System.out.println("Contraseña incorrecta. Escríbala de nuevo");
+            } else {
+                equalPassword = true;
+            }
+        } while (!equalPassword);
         System.out.println("Inserta un estado: ");
         status = scan.nextLine();
+
+        controller.createProfile(nameOfProfile, password, status);
     }
 
     /**
@@ -118,6 +119,8 @@ public class InitMenuView {
      * @return devuelve el nuevo nombre introducido por el usuario
      */
     public String showNewNameMenu() {
+        String nameOfProfile;
+        Scanner scan = new Scanner(System.in);
 
         System.out.println("El nombre introducido ya está en uso, intruduzca uno diferente, por favor: ");
         nameOfProfile = scan.nextLine();

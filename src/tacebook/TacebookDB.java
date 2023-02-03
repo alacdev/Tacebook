@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author haleacu
  */
 public class TacebookDB {
-    private static ArrayList <Profile> profiles;
+    private static ArrayList <Profile> profiles = new ArrayList<>();
 
     public static ArrayList<Profile> getProfiles() {
         return profiles;
