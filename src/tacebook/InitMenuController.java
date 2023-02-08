@@ -33,10 +33,9 @@ public class InitMenuController {
      */
     public void login(String name, String password) {        
         for (Profile p : TacebookDB.getProfiles()) {
-            if (p.getName().equals(name) & p.getPassword().equals(password)) {
+            if (p.getName().equals(name) && p.getPassword().equals(password)) {
                 controller.openSession(p);
-            } else {
-                System.out.println("");
+            } else {                
                 menuView.showLoginErrorMessage();
             }
         }
