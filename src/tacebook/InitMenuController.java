@@ -9,7 +9,7 @@ package tacebook;
  * @author haleacu
  */
 public class InitMenuController {
-
+    
     InitMenuView menuView = new InitMenuView(this);
     ProfileController controller = new ProfileController();
 
@@ -22,7 +22,7 @@ public class InitMenuController {
         do {
             exit = menuView.showLoginMenu();
         } while (!exit);
-    }   
+    }
 
     /**
      * Método para iniciar sesión que abre una sesión si existe el usuario con
@@ -32,14 +32,11 @@ public class InitMenuController {
      * @param password
      */
     public void login(String name, String password) {        
-        for (Profile p : TacebookDB.getProfiles()) {
-            if (p.getName().equals(name) && p.getPassword().equals(password)) {
-                controller.openSession(p);
-            } else {                
-                menuView.showLoginErrorMessage();
-            }
-        }
-
+        if (ProfileDB.findByNameAndPassword(name, password, 0) != null) {
+            controller.openSession(ProfileDB.findByNameAndPassword(name, password, 0));
+        } else {            
+            menuView.showLoginErrorMessage();
+        }                
     }
 
     /**
@@ -68,7 +65,7 @@ public class InitMenuController {
                 nameIsUsed = true;
             }
         }
-
+        
         if (nameIsUsed) {
             menuView.showNewNameMenu();
         } else {
