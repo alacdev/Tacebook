@@ -2,7 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tacebook;
+package controller;
+
+import database.ProfileDB;
+import tacebook.Message;
+import tacebook.Post;
+import tacebook.Profile;
+import viewer.ProfileView;
 
 /**
  *
@@ -72,5 +78,45 @@ public class ProfileController {
      */
     public void updateProfileStatus(String newStatus) {
 
+    }
+    
+    public void newPost(String text, Profile destProfile) {
+        
+    }
+    
+    public void newComment(Post post, String commentText) {
+        
+    }
+    
+    public void newLike(Post post) {
+        
+    }
+    
+    public void newFriendshipRequest(String profileName) {
+        
+    }
+    
+    public void acceptFriendshipRequest(Profile sourceProfile) {
+        
+    }
+    
+    public void rejectFriendshipRequest(Profile sourceProfile) {
+        
+    }
+    
+    public void newMessage(Profile destProfile, String text) {
+        
+    }
+    
+    public void deleteMessage(Message message) {
+        
+    }
+    
+    public void markMessageAsRead(Message message) {
+        
+    }
+    
+    public void replyMessage(Message message, String text) {
+        
     }
 }

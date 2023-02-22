@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tacebook;
+package database;
+
+import tacebook.Profile;
 
 /**
  *
@@ -54,6 +56,33 @@ public class ProfileDB {
      * @param profile
      */
     public static void update(Profile profile) {
+        
+    }
+    
+    /**
+     * Almacena una nueva solicitud de amistad.
+     * @param destProfile
+     * @param sourceProfile
+     */
+    public static void saveFrienshipRequest(Profile destProfile, Profile sourceProfile) {
+        
+    }
+    
+    /**
+     * Borra una solicitud de amistad.
+     * @param destProfile
+     * @param sourceProfile
+     */
+    public static void removeFrienshipRequest(Profile destProfile, Profile sourceProfile) {
+        
+    }
+    
+    /**
+     * Almacena una amistad entre dos perfiles
+     * @param profile1
+     * @param profile2
+     */
+    public static void saveFriendship(Profile profile1, Profile profile2) {
         
     }
 }

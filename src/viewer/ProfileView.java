@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tacebook;
+package viewer;
 
+import controller.ProfileController;
 import java.util.Scanner;
+import tacebook.Profile;
 
 /**
  *
@@ -72,4 +74,73 @@ public class ProfileView {
                 this.showProfileMenu(profile);
         }
     }
+    
+    private int selectElement(String text, int maxNumber, Scanner scanner) {
+        
+        return 0;        
+    }
+    
+    private void writeNewPost(Scanner scanner, Profile profile) {
+        
+    }
+    
+   private void commentPost(Scanner scanner, Profile profile) {
+       
+   }
+   
+   private void addLike(Scanner scanner, Profile profile) {
+       
+   }
+   
+   private void showBiography(boolean ownProfile, Scanner scanner, Profile profile) {
+       
+   }
+   
+   private void sendFriendshipRequest(boolean ownProfile, Scanner scanner, Profile profile) {
+       
+   }
+   
+   private void proccessFriendshipRequest(boolean ownProfile, Scanner scanner, Profile profile, boolean accept) {
+       
+   }
+   
+   private void sendPrivateMessage(boolean ownProfile, Scanner scanner, Profile profile) {
+       
+   }
+   
+   private void readPrivateMessage(boolean ownProfile, Scanner scanner, Profile profile) {
+       
+   }
+   
+   private void deletePrivateMessage(boolean ownProfile, Scanner scanner, Profile profile) {
+       
+   }
+   
+   private void showOldPosts(Scanner scanner, Profile profile) {
+       
+   }
+   
+   public void showProfileNotFoundMessage() {
+       
+   }
+   
+   public void showCannotLikeOwnPostMessage() {
+       
+   }
+   
+   public void showAlreadyLikedPostMessage() {
+       
+   }
+   
+   public void showIsAlreadyFriendMessage(String profileName) {
+       
+   }
+   
+   public void showExistsFrienshipRequestMessage(String profileName) {
+       
+   }
+   
+   public void showDuplicateFrienshipRequestMessage(String profileName) {
+       
+   }
 }
